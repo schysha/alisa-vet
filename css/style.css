@@ -41,8 +41,20 @@ a{color:inherit}
 .hero h1{margin:22px 0 18px}
 .badge{display:inline-flex;align-items:center;gap:10px;background:var(--gbg);color:var(--gtx);font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px}
 .badge i{width:10px;height:10px;border-radius:50%;background:var(--neon);box-shadow:0 0 0 4px #22ff2240}
-.hero-art{background:var(--or);border-radius:28px;min-height:420px;display:flex;align-items:center;justify-content:center;padding:28px}
-.hero-art img{width:100%;max-width:400px;height:auto}
+/* photo frame */
+.frame{position:relative;justify-self:end;width:100%;max-width:480px;background:var(--or);padding:12px;border-radius:28px;box-shadow:6px 6px 16px rgba(43,43,45,.18)}
+.slides{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;border-radius:18px;-webkit-overflow-scrolling:touch}
+.slides::-webkit-scrollbar{display:none}
+.slides:focus-visible{outline:3px solid #1B6EF3;outline-offset:3px}
+.slide{margin:0;flex:0 0 100%;scroll-snap-align:center;aspect-ratio:4/5;background:var(--cream)}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.fnav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);font:700 26px/1 Inter,Arial,sans-serif;padding:0 0 3px;cursor:pointer;box-shadow:2px 2px 6px rgba(43,43,45,.25)}
+.fnav.prev{left:-6px}.fnav.next{right:-6px}
+.fnav:active{transform:translateY(-50%) scale(.94)}
+.fnav:focus-visible,.dots button:focus-visible{outline:3px solid #1B6EF3;outline-offset:2px}
+.dots{position:absolute;left:0;right:0;bottom:22px;display:flex;justify-content:center;gap:8px}
+.dots button{width:10px;height:10px;padding:0;border-radius:50%;border:1.5px solid var(--ink);background:#fff;opacity:.85;cursor:pointer}
+.dots button[aria-current]{background:var(--neon);width:22px;border-radius:6px;opacity:1}
 /* sections */
 .section{padding:32px 0 48px}
 .section-head p{color:var(--mut);margin-bottom:28px}
@@ -110,7 +122,7 @@ a{color:inherit}
 }
 @media(max-width:760px){
 .hero{grid-template-columns:1fr;padding:36px 0}
-.hero-art{display:none}
+.frame{justify-self:stretch;max-width:none}.slide{aspect-ratio:4/3}.fnav.prev{left:-2px}.fnav.next{right:-2px}
 .grid,.split,.contact,.team,.person.feat{grid-template-columns:minmax(0,1fr)}
 h1,h2{overflow-wrap:break-word}.panel h2{font-size:26px}
 .contact{gap:24px}
